@@ -5,7 +5,7 @@
 
 #include "GameObject.h"
 
-
+#include "TestCircle.h"
 
 /**
 Class for main game.

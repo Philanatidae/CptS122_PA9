@@ -35,7 +35,8 @@ void Game::run() {
 }
 
 void Game::createLevel() {
-	
+	// Create just a circle to test the GameObjects list
+	_gameObjects.push_back(new TestCircle(100.0f));
 }
 
 void Game::updateAll(const sf::Time& dt) {

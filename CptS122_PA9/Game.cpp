@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-	:_window(sf::VideoMode(1280,720), "CptS 122 Game") {
+	:_window(sf::VideoMode(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT), "CptS 122 Game"),_camera(sf::FloatRect(0, 0, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT)) {
 	createLevel();
 }
 
@@ -29,6 +29,7 @@ void Game::run() {
 
 		// Render
 		_window.clear();
+		_window.setView(_camera);
 		drawAll();
 		_window.display();
 	}
@@ -46,6 +47,12 @@ void Game::updateAll(const sf::Time& dt) {
 	while (iterator != _gameObjects.end()) {
 		GameObject* gameObject = *(iterator++);
 		gameObject->update(_gameObjects, dt);
+
+		Player* player = dynamic_cast<Player*>(gameObject);
+		if (player != nullptr) {
+			// View updates to the player's position
+			_camera.setCenter(player->getPosition().x, player->getPosition().y + CAMERA_PLAYER_OFFSET);
+		}
 	}
 }
 void Game::drawAll() {

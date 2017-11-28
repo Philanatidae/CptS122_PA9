@@ -8,6 +8,11 @@
 #include "Player.h"
 #include "Floor.h"
 
+#define GAME_WINDOW_WIDTH 1280
+#define GAME_WINDOW_HEIGHT 720
+
+#define CAMERA_PLAYER_OFFSET -50
+
 /**
 Class for main game.
 */
@@ -23,6 +28,7 @@ public:
 
 private:
 	std::set<GameObject*> _gameObjects;
+	sf::View _camera;
 	sf::RenderWindow _window;
 
 	/**

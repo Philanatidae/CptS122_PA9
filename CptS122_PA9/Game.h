@@ -5,6 +5,8 @@
 
 #include "GameObject.h"
 
+#include "Player.h"
+#include "Floor.h"
 
 /**
 Class for main game.

@@ -30,7 +30,7 @@ const float& Player::getRotation() const
 {
 	return _rectShape.getRotation();
 }
-const sf::FloatRect& Player::getBoundingBox() const
+sf::FloatRect Player::getBoundingBox() const
 {
 	return _rectShape.getGlobalBounds();
 }

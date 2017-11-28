@@ -11,7 +11,7 @@ class Player : public GameObject
 		void draw(sf::RenderWindow& window);
 		const sf::Vector2f& getPosition() const;
 		const float& getRotation() const;
-		const sf::FloatRect& getBoundingBox() const;
+		sf::FloatRect getBoundingBox() const;
 
 	protected:
 		void move(const float& dx, const float& dy);

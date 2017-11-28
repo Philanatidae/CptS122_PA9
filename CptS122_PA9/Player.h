@@ -4,6 +4,7 @@
 #include "FallingPhysicsObject.h"
 
 #define PLAYER_HORIZONTAL_VELOCITY 200
+#define PLAYER_JUMP_VELOCITY -500
 
 class Player : public FallingPhysicsObject
 {
@@ -20,5 +21,7 @@ class Player : public FallingPhysicsObject
 
 	private:
 		sf::RectangleShape _rectShape;
+
+		void jump();
 
 };

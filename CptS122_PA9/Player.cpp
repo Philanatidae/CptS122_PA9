@@ -16,6 +16,12 @@ void Player::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt)
 	{
 		move(-PLAYER_HORIZONTAL_VELOCITY * dt.asSeconds(), 0.0f);
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) { // Jump
+		if (isGrounded()) {
+			jump();
+		}
+	}
 	
 	// Update physics after moving player
 	FallingPhysicsObject::update(gameObjects, dt);
@@ -38,4 +44,8 @@ sf::FloatRect Player::getBoundingBox() const
 }
 void Player::move(const float& dx, const float& dy) {
 	_rectShape.move(dx, dy);
+}
+
+void Player::jump() {
+	setYVelocity(PLAYER_JUMP_VELOCITY);
 }

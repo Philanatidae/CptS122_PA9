@@ -3,6 +3,7 @@
 #include"GameObject.h"
 
 class Player : public GameObject
+#define PLAYER_HORIZONTAL_VELOCITY 200
 {
 	public:
 		Player();
@@ -11,6 +12,9 @@ class Player : public GameObject
 		const sf::Vector2f& getPosition() const;
 		const float& getRotation() const;
 		const sf::FloatRect& getBoundingBox() const;
+
+	protected:
+		void move(const float& dx, const float& dy);
 
 	private:
 		sf::RectangleShape _rectShape;

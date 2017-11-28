@@ -39,6 +39,8 @@ void Game::createLevel() {
 	_gameObjects.insert(new Player());
 	_gameObjects.insert(new Floor(sf::Vector2f(400.0f, 600.0f), 300, 20)); // Bottom floor
 	_gameObjects.insert(new Floor(sf::Vector2f(700.0f, 300.0f), 20, 300)); // Right floor
+
+	_gameObjects.insert(new Enemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(500, 300)));
 }
 
 void Game::updateAll(const sf::Time& dt) {

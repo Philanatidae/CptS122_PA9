@@ -1,7 +1,7 @@
 #include "FallingPhysicsObject.h"
 
 FallingPhysicsObject::FallingPhysicsObject()
-	:_yVel(-500),_isGrounded(false) {
+	:_yVel(0),_isGrounded(false) {
 
 }
 

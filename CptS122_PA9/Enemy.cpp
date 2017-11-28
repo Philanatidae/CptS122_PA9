@@ -1,17 +1,19 @@
 #include"Enemy.h"
 
 Enemy::Enemy(const sf::Vector2f& size, const sf::Color& color, const sf::Vector2f& position)
-	:_rectShape(size), _initialXPosition(position.x)
+	:_rectShape(size)
 {
 	_rectShape.setFillColor(color);
 	_rectShape.setPosition(position);
 }
-void Enemy::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt)
+void Enemy::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
-	float yPosition = _rectShape.getPosition().y;
-
 	_elapsedTime += dt.asSeconds();
-	_rectShape.setPosition(100 * sin(_elapsedTime) + _initialXPosition, yPosition);
+	// Move to sine wave (velocity, so we use the derivative of sin and integrate)
+	move(100 * cos(_elapsedTime) * dt.asSeconds(), 0);
+
+	// Update physics last
+	FallingPhysicsObject::update(gameObjects, dt);
 }
 void Enemy::draw(sf::RenderWindow& window)
 {
@@ -28,4 +30,8 @@ const float& Enemy::getRotation() const
 sf::FloatRect Enemy::getBoundingBox() const
 {
 	return _rectShape.getGlobalBounds();
+}
+
+void Enemy::move(const float& dx, const float& dy) {
+	_rectShape.move(dx, dy);
 }

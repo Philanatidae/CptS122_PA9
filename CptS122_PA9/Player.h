@@ -1,9 +1,11 @@
 #pragma once
 
-#include"GameObject.h"
+#include "GameObject.h"
+#include "FallingPhysicsObject.h"
 
-class Player : public GameObject
 #define PLAYER_HORIZONTAL_VELOCITY 200
+
+class Player : public FallingPhysicsObject
 {
 	public:
 		Player();

@@ -17,6 +17,8 @@ void Player::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt)
 		move(-PLAYER_HORIZONTAL_VELOCITY * dt.asSeconds(), 0.0f);
 	}
 	
+	// Update physics after moving player
+	FallingPhysicsObject::update(gameObjects, dt);
 }
 void Player::draw(sf::RenderWindow &window)
 {

@@ -41,11 +41,10 @@ void Game::createLevel() {
 }
 
 void Game::updateAll(const sf::Time& dt) {
-	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
-		iterator != _gameObjects.end();
-		iterator++) {
-		GameObject* gameObject = *iterator;
-
+	// While loop is necessary otherwise an invalid iterator will occur
+	std::set<GameObject*>::iterator iterator = _gameObjects.begin();
+	while (iterator != _gameObjects.end()) {
+		GameObject* gameObject = *(iterator++);
 		gameObject->update(_gameObjects, dt);
 	}
 }

@@ -35,8 +35,9 @@ void Game::run() {
 }
 
 void Game::createLevel() {
-	// Create just a circle to test the GameObjects list
-	_gameObjects.push_back(new TestCircle(100.0f));
+	_gameObjects.push_back(new Player());
+	_gameObjects.push_back(new Floor(sf::Vector2f(400.0f, 600.0f), 300, 20)); // Bottom floor
+	_gameObjects.push_back(new Floor(sf::Vector2f(700.0f, 300.0f), 20, 300)); // Right floor
 }
 
 void Game::updateAll(const sf::Time& dt) {

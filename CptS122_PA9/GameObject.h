@@ -36,5 +36,5 @@ public:
 	detection.
 	@return Bounding box of the object.
 	*/
-	virtual const sf::FloatRect& getBoundingBox() const = 0;
+	virtual sf::FloatRect getBoundingBox() const = 0;
 };

@@ -10,13 +10,21 @@ void Player::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) //move right
 	{
-		_rectShape.move(sf::Vector2f(0.2f, 0.0f));
+		move(PLAYER_HORIZONTAL_VELOCITY * dt.asSeconds(), 0.0f);
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) //move left
 	{
-		_rectShape.move(sf::Vector2f(-0.2f, 0.0f));
+		move(-PLAYER_HORIZONTAL_VELOCITY * dt.asSeconds(), 0.0f);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) { // Jump
+		if (isGrounded()) {
+			jump();
+		}
 	}
 	
+	// Update physics after moving player
+	FallingPhysicsObject::update(gameObjects, dt);
 }
 void Player::draw(sf::RenderWindow &window)
 {
@@ -30,7 +38,14 @@ const float& Player::getRotation() const
 {
 	return _rectShape.getRotation();
 }
-const sf::FloatRect& Player::getBoundingBox() const
+sf::FloatRect Player::getBoundingBox() const
 {
 	return _rectShape.getGlobalBounds();
+}
+void Player::move(const float& dx, const float& dy) {
+	_rectShape.move(dx, dy);
+}
+
+void Player::jump() {
+	setYVelocity(PLAYER_JUMP_VELOCITY);
 }

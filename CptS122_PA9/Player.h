@@ -4,7 +4,7 @@
 #include "FallingPhysicsObject.h"
 
 #define PLAYER_HORIZONTAL_VELOCITY 200
-#define PLAYER_JUMP_VELOCITY -500
+#define PLAYER_JUMP_VELOCITY -450
 
 class Player : public FallingPhysicsObject
 {

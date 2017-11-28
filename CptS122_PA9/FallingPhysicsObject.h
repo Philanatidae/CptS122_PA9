@@ -11,7 +11,7 @@ class FallingPhysicsObject : public GameObject {
 public:
 	FallingPhysicsObject();
 
-	virtual void update(std::vector<GameObject*>& gameObjects, const sf::Time& dt);
+	virtual void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 
 	const float& getYVelocity() const;
 	const bool& isGrounded() const;

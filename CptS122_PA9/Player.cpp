@@ -6,7 +6,7 @@ Player::Player()
 	_rectShape.setFillColor(sf::Color::Blue);
 	_rectShape.setPosition(sf::Vector2f(400.0f, 400.0f));
 }
-void Player::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt)
+void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) //move right
 	{

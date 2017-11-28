@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <vector>
+#include <set>
 
 /**
 Base game object class that all other
@@ -14,7 +14,7 @@ public:
 	@param gameObjects Global list of game objects.
 	@param dt Time since last frame (change in time since last frame).
 	*/
-	virtual void update(std::vector<GameObject*>& gameObjects, const sf::Time& dt) = 0;
+	virtual void update(std::set<GameObject*>& gameObjects, const sf::Time& dt) = 0;
 	/**
 	Draws the object to the window.
 	@param window SFML Window to draw to.

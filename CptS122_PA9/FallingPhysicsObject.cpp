@@ -5,7 +5,7 @@ FallingPhysicsObject::FallingPhysicsObject()
 
 }
 
-void FallingPhysicsObject::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt) {
+void FallingPhysicsObject::update(std::set<GameObject*>& gameObjects, const sf::Time& dt) {
 	const float totAccel = GRAVITY_CONST;
 	_yVel += totAccel * dt.asSeconds();
 	move(0, _yVel * dt.asSeconds() + 0.5f * totAccel * dt.asSeconds() * dt.asSeconds());
@@ -14,7 +14,7 @@ void FallingPhysicsObject::update(std::vector<GameObject*>& gameObjects, const s
 
 	// Floor collision check
 	const sf::FloatRect myBoundingBox = getBoundingBox();
-	for (std::vector<GameObject*>::iterator iterator = gameObjects.begin();
+	for (std::set<GameObject*>::iterator iterator = gameObjects.begin();
 		iterator != gameObjects.end();
 		iterator++) {
 		GameObject* gameObject = *iterator;

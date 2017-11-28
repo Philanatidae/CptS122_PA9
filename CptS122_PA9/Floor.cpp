@@ -6,7 +6,7 @@ Floor::Floor(const sf::Vector2f& position, const float& width, const float& heig
 	_floorEntity.setFillColor(sf::Color::White);
 }
 
-void Floor::update(std::vector<GameObject*>& gameObjects, const sf::Time& dt) {
+void Floor::update(std::set<GameObject*>& gameObjects, const sf::Time& dt) {
 
 }
 void Floor::draw(sf::RenderWindow &window)

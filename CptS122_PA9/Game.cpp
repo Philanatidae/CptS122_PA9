@@ -35,13 +35,13 @@ void Game::run() {
 }
 
 void Game::createLevel() {
-	_gameObjects.push_back(new Player());
-	_gameObjects.push_back(new Floor(sf::Vector2f(400.0f, 600.0f), 300, 20)); // Bottom floor
-	_gameObjects.push_back(new Floor(sf::Vector2f(700.0f, 300.0f), 20, 300)); // Right floor
+	_gameObjects.insert(new Player());
+	_gameObjects.insert(new Floor(sf::Vector2f(400.0f, 600.0f), 300, 20)); // Bottom floor
+	_gameObjects.insert(new Floor(sf::Vector2f(700.0f, 300.0f), 20, 300)); // Right floor
 }
 
 void Game::updateAll(const sf::Time& dt) {
-	for (std::vector<GameObject*>::iterator iterator = _gameObjects.begin();
+	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 		iterator != _gameObjects.end();
 		iterator++) {
 		GameObject* gameObject = *iterator;
@@ -50,7 +50,7 @@ void Game::updateAll(const sf::Time& dt) {
 	}
 }
 void Game::drawAll() {
-	for (std::vector<GameObject*>::iterator iterator = _gameObjects.begin();
+	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 		iterator != _gameObjects.end();
 		iterator++) {
 		GameObject* gameObject = *iterator;

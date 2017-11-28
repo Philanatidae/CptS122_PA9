@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <set>
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
@@ -22,7 +22,7 @@ public:
 	void run();
 
 private:
-	std::vector<GameObject*> _gameObjects;
+	std::set<GameObject*> _gameObjects;
 	sf::RenderWindow _window;
 
 	/**

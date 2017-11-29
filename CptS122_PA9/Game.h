@@ -5,8 +5,9 @@
 
 #include "GameObject.h"
 
+#include "LevelBuilder.h"
+
 #include "Player.h"
-#include "Floor.h"
 #include "Enemy.h"
 
 #define GAME_WINDOW_WIDTH 1280

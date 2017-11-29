@@ -155,6 +155,7 @@
     <ClCompile Include="FallingPhysicsObject.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LevelBuilder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlatformPhysicsObject.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="LevelBuilder.h" />
     <ClInclude Include="PlatformPhysicsObject.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

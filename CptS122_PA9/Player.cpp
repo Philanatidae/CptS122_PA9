@@ -1,10 +1,10 @@
 #include"Player.h"
 
-Player::Player() 
+Player::Player(const sf::Vector2f& position) 
 	: _rectShape(sf::Vector2f(50.0f, 100.0f))
 {
 	_rectShape.setFillColor(sf::Color::Blue);
-	_rectShape.setPosition(sf::Vector2f(400.0f, 400.0f));
+	_rectShape.setPosition(position);
 }
 void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {

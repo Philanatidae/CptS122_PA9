@@ -9,7 +9,7 @@
 class Player : public FallingPhysicsObject
 {
 	public:
-		Player();
+		Player(const sf::Vector2f& position);
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 		void draw(sf::RenderWindow& window);
 		const sf::Vector2f& getPosition() const;

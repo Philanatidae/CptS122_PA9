@@ -37,4 +37,20 @@ public:
 	@return Bounding box of the object.
 	*/
 	virtual sf::FloatRect getBoundingBox() const = 0;
+	/**
+	Returns bool to indicate whether the object is ready to be deleted
+	@return toDelete
+	*/
+	bool toDelete() {
+		return _toDelete;
+	}
+	/**
+	Sets toDelete value to true
+	*/
+	void setToDelete() {
+		_toDelete = true;
+	}
+
+protected:
+	bool _toDelete = false;
 };

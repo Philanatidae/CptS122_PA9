@@ -9,6 +9,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Projectile.h"
 
 #define GAME_WINDOW_WIDTH 1280
 #define GAME_WINDOW_HEIGHT 720

@@ -34,6 +34,7 @@ void FallingPhysicsObject::update(std::set<GameObject*>& gameObjects, const sf::
 			// Detemine normal of the platform physics object
 			// This will be the direction which the platform will push the falling physics object.
 			sf::Vector2i norm(0, 0);
+
 			// Source for algorithm to part of rectangle colliding:
 			// https://gamedev.stackexchange.com/questions/29786/a-simple-2d-rectangle-collision-algorithm-that-also-determines-which-sides-that
 			const float w = 0.5f * (platformPhysicsObjectBoundingBox.width + myBoundingBox.width);
@@ -47,25 +48,13 @@ void FallingPhysicsObject::update(std::set<GameObject*>& gameObjects, const sf::
 			const float hx = h * dx;
 
 			// Normal is relative to the platform, not "this" object
-			if (wy > hx) {
-				if (wy > -hx) {
-					// Top
-					norm.y = -1;
-				}
-				else {
-					// Right
-					norm.x = 1;
-				}
+			if (abs(wy) > abs(hx)) {
+				// Width dominates; top/bottom
+				norm.y = -wy / abs(wy);
 			}
 			else {
-				if (wy > -hx) {
-					// Left
-					norm.x = -1;
-				}
-				else {
-					// Bottom
-					norm.y = 1;
-				}
+				// Height dominates; left/right
+				norm.x = -hx / abs(hx);
 			}
 
 			// Determine overlap
@@ -76,7 +65,7 @@ void FallingPhysicsObject::update(std::set<GameObject*>& gameObjects, const sf::
 			const sf::Vector2f overlap = myEdge - platformEdge;
 
 			// Move in the direction of the normal
-			move(norm.x * overlap.x, norm.y * overlap.y);
+			move(norm.x * abs(overlap.x), norm.y * abs(overlap.y));
 			// If normal is facing upward (top of platform)
 			if (norm.y > 0) {
 				// Hit a ceiling, no more vertical velocity

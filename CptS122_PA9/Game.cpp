@@ -26,6 +26,7 @@ void Game::run() {
 		// Update
 		sf::Time elapsed = dtClock.restart();
 		updateAll(elapsed);
+		deleteObjects();
 
 		// Render
 		_window.clear();
@@ -37,6 +38,7 @@ void Game::run() {
 
 void Game::createLevel() {
 	_gameObjects.insert(new Player(sf::Vector2f(400, 0)));
+	_gameObjects.insert(new Projectile(10.0f, sf::Vector2f(400, 250))); 
 
 	// Floors
 	LevelBuilder levelBuilder(&_gameObjects);
@@ -81,5 +83,24 @@ void Game::drawAll() {
 		GameObject* gameObject = *iterator;
 
 		gameObject->draw(_window);
+	}
+}
+void Game::deleteObjects() {
+	std::set<GameObject*>::iterator iterator = _gameObjects.begin();
+	std::set<GameObject*>::iterator temp;
+
+	while (iterator != _gameObjects.end() ) {
+		GameObject* gameObject = *iterator;
+
+		if (gameObject->toDelete()){ // Delete object
+			temp = iterator;
+			temp++;
+			_gameObjects.erase(iterator);
+			iterator = temp;
+			delete gameObject;
+		}
+		else {
+			iterator++;
+		}
 	}
 }

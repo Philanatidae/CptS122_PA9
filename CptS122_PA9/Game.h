@@ -48,4 +48,8 @@ private:
 	Draws all GameObjects to the window.
 	*/
 	void drawAll();
+	/**
+	Delete all GameObjects that are no longer needed.
+	*/
+	void deleteObjects();
 };

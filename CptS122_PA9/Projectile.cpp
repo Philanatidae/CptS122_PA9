@@ -26,10 +26,11 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		if (pEnemy == nullptr)
 			continue;
 
-		//If colliding with enemy, destroy enemy and projectile
+		//If colliding with enemy, projectile and enemy can be set toDelete
 		if (pEnemy->getBoundingBox().intersects(getBoundingBox()))
 		{
-			//unfinished, not sure how we wanna handle deleting GameObjects
+			_toDelete = true;
+			pEnemy->setToDelete();
 		}
 	}
 

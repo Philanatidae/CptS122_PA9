@@ -59,6 +59,7 @@ void Game::createLevel() {
 
 	// Enemies
 	_gameObjects.insert(new SineEnemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(1100, 0)));
+	_gameObjects.insert(new BouncingEnemy(sf::Color::Red, sf::Vector2f(1200, 0)));
 }
 
 void Game::updateAll(const sf::Time& dt) {

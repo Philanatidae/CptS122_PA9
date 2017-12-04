@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 #include "Enemy.h"
+#include "Floor.h"
 
 #define PROJECTILE_HORIZONTAL_VELOCTIY 300
 

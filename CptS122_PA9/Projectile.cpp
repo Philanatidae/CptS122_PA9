@@ -20,15 +20,22 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 	{
 		GameObject *pGameObject = *iterator;
 
-		//Projectile can only collide with Enemy
-		if (dynamic_cast<Enemy*>(pGameObject) == nullptr)
-			continue;
-
-		//If colliding with enemy, projectile and enemy can be set toDelete
-		if (pGameObject->getBoundingBox().intersects(getBoundingBox()))
-		{
-			_toDelete = true;
-			pGameObject->setToDelete();
+		// Projectile can collide with Enemy
+		if (dynamic_cast<Enemy*>(pGameObject) != nullptr) {
+			//If colliding with enemy, projectile and enemy can be set toDelete
+			if (pGameObject->getBoundingBox().intersects(getBoundingBox()))
+			{
+				_toDelete = true;
+				pGameObject->setToDelete();
+			}
+		}
+		// Delete projectile if it has hit the floor
+		if (dynamic_cast<Floor*>(pGameObject) != nullptr) {
+			//If colliding with floor, projectile only is set toDelete
+			if (pGameObject->getBoundingBox().intersects(getBoundingBox()))
+			{
+				_toDelete = true;
+			}
 		}
 	}
 

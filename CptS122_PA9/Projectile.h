@@ -9,7 +9,7 @@
 class Projectile : public GameObject
 {
 	public:
-		Projectile(const float& radius, const sf::Vector2f& position);
+		Projectile(const float& radius, const sf::Vector2f& position, const float& direction);
 
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 		void draw(sf::RenderWindow& window);
@@ -19,6 +19,7 @@ class Projectile : public GameObject
 
 	private:
 		sf::CircleShape _circleShape;
+		float _xVel;
 
 		void move(const float& dx, const float& dy);
 };

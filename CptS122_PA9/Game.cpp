@@ -38,7 +38,6 @@ void Game::run() {
 
 void Game::createLevel() {
 	_gameObjects.insert(new Player(sf::Vector2f(400, 0)));
-	//_gameObjects.insert(new Projectile(10.0f, sf::Vector2f(400, 250))); 
 
 	// Floors
 	LevelBuilder levelBuilder(&_gameObjects);

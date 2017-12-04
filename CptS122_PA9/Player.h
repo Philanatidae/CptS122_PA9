@@ -2,9 +2,15 @@
 
 #include "GameObject.h"
 #include "FallingPhysicsObject.h"
+#include "Projectile.h"
 
 #define PLAYER_HORIZONTAL_VELOCITY 200
 #define PLAYER_JUMP_VELOCITY -450
+
+#define PLAYER_WIDTH 50
+#define PLAYER_HEIGHT 100
+
+#define PLAYER_SHOT_TIMER_DURATION 0.2f
 
 class Player : public FallingPhysicsObject
 {
@@ -21,6 +27,7 @@ class Player : public FallingPhysicsObject
 
 	private:
 		sf::RectangleShape _rectShape;
+		float _shotTimer;
 
 		void jump();
 

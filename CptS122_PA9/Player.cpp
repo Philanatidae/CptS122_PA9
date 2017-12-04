@@ -1,7 +1,7 @@
 #include"Player.h"
 
 Player::Player(const sf::Vector2f& position) 
-	: _rectShape(sf::Vector2f(50.0f, 100.0f))
+	: _rectShape(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT))
 {
 	_rectShape.setFillColor(sf::Color::Blue);
 	_rectShape.setPosition(position);
@@ -21,6 +21,22 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		if (isGrounded()) {
 			jump();
 		}
+	}
+
+	_shotTimer -= dt.asSeconds();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { // Shoot left
+		if (_shotTimer <= 0) {
+			_shotTimer = PLAYER_SHOT_TIMER_DURATION;
+			gameObjects.insert(new Projectile(10.0f, sf::Vector2f(getPosition().x - 10 * 2, getPosition().y + PLAYER_HEIGHT / 2), -1));
+		}
+	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { // Shoot left
+		if (_shotTimer <= 0) {
+			_shotTimer = PLAYER_SHOT_TIMER_DURATION;
+			gameObjects.insert(new Projectile(10.0f, sf::Vector2f(getPosition().x + PLAYER_WIDTH, getPosition().y + PLAYER_HEIGHT / 2), 1));
+		}
+	}
+	else {
+		_shotTimer = 0;
 	}
 	
 	// Update physics after moving player

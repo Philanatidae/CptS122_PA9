@@ -1,7 +1,7 @@
 #include"Projectile.h"
 
-Projectile::Projectile(const float& radius, const sf::Vector2f& position)
-	: _circleShape(radius)
+Projectile::Projectile(const float& radius, const sf::Vector2f& position, const float& direction)
+	: _circleShape(radius),_xVel(direction / abs(direction) * PROJECTILE_HORIZONTAL_VELOCTIY)
 {
 	_circleShape.setFillColor(sf::Color::Green);
 	_circleShape.setPosition(position);
@@ -9,7 +9,7 @@ Projectile::Projectile(const float& radius, const sf::Vector2f& position)
 
 void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
-	move(PROJECTILE_HORIZONTAL_VELOCTIY * dt.asSeconds(), 0);
+	move(_xVel * dt.asSeconds(), 0);
 
 	//Enemy Collision check
 	const sf::FloatRect myBoundingBox = getBoundingBox();

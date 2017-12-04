@@ -38,7 +38,23 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 	else {
 		_shotTimer = 0;
 	}
-	
+
+	// Enemy Collision Check
+	for (std::set<GameObject*>::iterator iterator = gameObjects.begin();
+		iterator != gameObjects.end();
+		iterator++)
+	{
+		if (dynamic_cast<Enemy*>(*iterator) != nullptr)
+		{
+			// Player Collided with enemy
+			if (getBoundingBox().intersects((*iterator)->getBoundingBox())) 
+			{
+				_toDelete = true;
+			}
+		}
+	}
+
+
 	// Update physics after moving player
 	FallingPhysicsObject::update(gameObjects, dt);
 }

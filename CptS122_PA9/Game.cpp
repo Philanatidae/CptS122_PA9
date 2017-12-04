@@ -38,7 +38,7 @@ void Game::run() {
 
 void Game::createLevel() {
 	_gameObjects.insert(new Player(sf::Vector2f(400, 0)));
-	_gameObjects.insert(new Projectile(10.0f, sf::Vector2f(400, 250))); 
+	//_gameObjects.insert(new Projectile(10.0f, sf::Vector2f(400, 250))); 
 
 	// Floors
 	LevelBuilder levelBuilder(&_gameObjects);
@@ -59,7 +59,7 @@ void Game::createLevel() {
 	levelBuilder.drawHorizontal(600);
 
 	// Enemies
-	_gameObjects.insert(new Enemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(1100, 0)));
+	_gameObjects.insert(new SineEnemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(1100, 0)));
 }
 
 void Game::updateAll(const sf::Time& dt) {

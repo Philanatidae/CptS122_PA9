@@ -8,7 +8,7 @@
 #include "LevelBuilder.h"
 
 #include "Player.h"
-#include "Enemy.h"
+#include "SineEnemy.h"
 #include "Projectile.h"
 
 #define GAME_WINDOW_WIDTH 1280

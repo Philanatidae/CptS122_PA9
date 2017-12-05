@@ -1,7 +1,9 @@
 #include"Projectile.h"
 
-Projectile::Projectile(const float& radius, const sf::Vector2f& position, const float& direction)
-	: _circleShape(radius),_xVel(direction / abs(direction) * PROJECTILE_HORIZONTAL_VELOCTIY)
+Projectile::Projectile(const float& radius, const sf::Vector2f& position, const float& direction,
+	const Target& target)
+	: _circleShape(radius),_xVel(direction / abs(direction) * PROJECTILE_HORIZONTAL_VELOCTIY),
+	_target(target)
 {
 	_circleShape.setFillColor(sf::Color::Green);
 	_circleShape.setPosition(position);
@@ -11,7 +13,7 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
 	move(_xVel * dt.asSeconds(), 0);
 
-	//Enemy Collision check
+	// Collision check
 	const sf::FloatRect myBoundingBox = getBoundingBox();
 
 	for (std::set<GameObject*>::iterator iterator = gameObjects.begin();
@@ -20,9 +22,21 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 	{
 		GameObject *pGameObject = *iterator;
 
-		// Projectile can collide with Enemy
-		if (dynamic_cast<Enemy*>(pGameObject) != nullptr) {
-			//If colliding with enemy, projectile and enemy can be set toDelete
+		// Check for collision with target
+		bool isTarget = false;
+
+		switch (_target)
+		{
+			case player:
+				isTarget = (dynamic_cast<Player*>(pGameObject) != nullptr);
+				break;
+			case enemy:
+				isTarget = (dynamic_cast<Enemy*>(pGameObject) != nullptr);
+				break;
+		}
+		if (isTarget)
+		{
+			//If colliding with target, projectile and target can be set toDelete
 			if (pGameObject->getBoundingBox().intersects(getBoundingBox()))
 			{
 				_toDelete = true;

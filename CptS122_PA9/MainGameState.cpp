@@ -12,14 +12,19 @@ void MainGameState::init() {
 void MainGameState::update(const sf::Time& dt) {
 	GameState::update(dt);
 
-	// TODO: Change this so that we don't use a loop to set the camera
-	// from the player's position
+	bool foundPlayer = false;
 	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 		iterator != _gameObjects.end();
 		iterator++) {
 		if (dynamic_cast<Player*>(*iterator)) {
+			foundPlayer = true;
 			_camera.setCenter((*iterator)->getPosition());
+			break;
 		}
+	}
+	if (!foundPlayer) {
+		getGame()->changeState(new GameOverGameState(getGame()));
+		return;
 	}
 }
 void MainGameState::draw(sf::RenderWindow& window) {

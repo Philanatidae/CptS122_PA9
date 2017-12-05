@@ -51,7 +51,16 @@ void GameState::deleteObjects() {
 			temp++;
 			_gameObjects.erase(iterator);
 			iterator = temp;
-			delete gameObject;
+			if (dynamic_cast<Player*>(gameObject) != nullptr) {
+				// If a player was destroyed, change to game over
+				// state.
+				delete gameObject;
+				//getGame()->changeState(new GameOverGameState(getGame()));
+				return;
+			}
+			else {
+				delete gameObject;
+			}
 		}
 		else {
 			iterator++;

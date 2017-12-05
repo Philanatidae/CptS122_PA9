@@ -30,6 +30,7 @@ void MenuGameState::update(const sf::Time& dt) {
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return)) {
 		getGame()->changeState(new MainGameState(getGame()));
+		return; // Return or else there are issues
 	}
 }
 void MenuGameState::draw(sf::RenderWindow& window) {

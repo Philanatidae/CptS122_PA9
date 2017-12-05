@@ -152,6 +152,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BouncingEnemy.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="MainGameState.cpp" />
     <ClCompile Include="SineEnemy.cpp" />
     <ClCompile Include="FallingPhysicsObject.cpp" />
     <ClCompile Include="Floor.cpp" />
@@ -169,7 +171,9 @@
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="LevelBuilder.h" />
+    <ClInclude Include="MainGameState.h" />
     <ClInclude Include="PlatformPhysicsObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />

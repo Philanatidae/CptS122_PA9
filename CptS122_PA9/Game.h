@@ -3,19 +3,11 @@
 #include <set>
 #include <SFML/Graphics.hpp>
 
-#include "GameObject.h"
-
-#include "LevelBuilder.h"
-
-#include "Player.h"
-#include "SineEnemy.h"
-#include "BouncingEnemy.h"
-#include "Projectile.h"
+#include "GameState.h"
+#include "MainGameState.h"
 
 #define GAME_WINDOW_WIDTH 1280
 #define GAME_WINDOW_HEIGHT 720
-
-#define CAMERA_PLAYER_OFFSET -50
 
 /**
 Class for main game.
@@ -30,28 +22,9 @@ public:
 	*/
 	void run();
 
+	void changeState(GameState* gameState);
+
 private:
-	std::set<GameObject*> _gameObjects;
-	sf::View _camera;
+	GameState* _gameState;
 	sf::RenderWindow _window;
-
-	/**
-	Creates the level out of GameObjects.
-	*/
-	void createLevel();
-
-	/**
-	Updates all GameObjects with dt (delta time since last
-	frame).
-	@dt Change in time since last frame.
-	*/
-	void updateAll(const sf::Time& dt);
-	/**
-	Draws all GameObjects to the window.
-	*/
-	void drawAll();
-	/**
-	Delete all GameObjects that are no longer needed.
-	*/
-	void deleteObjects();
 };

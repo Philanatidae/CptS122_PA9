@@ -1,6 +1,8 @@
 #pragma once
 
 #include "GameState.h"
+class GameState;
+class Game;
 
 #define GAME_WINDOW_WIDTH 1280
 #define GAME_WINDOW_HEIGHT 720

@@ -110,7 +110,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\Navdeep\Downloads\SFML-2.4.2-windows-vc14-64-bit\SFML-2.4.2\lib;C:\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,6 +154,7 @@
     <ClCompile Include="BouncingEnemy.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="MainGameState.cpp" />
+    <ClCompile Include="MenuGameState.cpp" />
     <ClCompile Include="SineEnemy.cpp" />
     <ClCompile Include="FallingPhysicsObject.cpp" />
     <ClCompile Include="Floor.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="PlatformPhysicsObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="TextObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BouncingEnemy.h" />
@@ -174,11 +176,16 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="LevelBuilder.h" />
     <ClInclude Include="MainGameState.h" />
+    <ClInclude Include="MenuGameState.h" />
     <ClInclude Include="PlatformPhysicsObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="SineEnemy.h" />
     <ClInclude Include="Target.h" />
+    <ClInclude Include="TextObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Roboto-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

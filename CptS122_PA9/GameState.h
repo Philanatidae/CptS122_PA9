@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Game.h"
+class Game; // Forward declare
+
 #include <set>
 #include <SFML/Graphics.hpp>
 
@@ -11,8 +14,6 @@
 #include "SineEnemy.h"
 #include "BouncingEnemy.h"
 #include "Projectile.h"
-
-class Game; // Forward declare
 
 class GameState {
 public:

@@ -3,12 +3,12 @@
 Game::Game():
 	_window(sf::VideoMode(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT), "CptS 122 Game"),
 	_gameState(nullptr) {
-
-	changeState(new MainGameState(this));
 }
 
 Game::~Game() {
-
+	if (_gameState != nullptr) {
+		delete _gameState;
+	}
 }
 
 void Game::run() {
@@ -27,12 +27,14 @@ void Game::run() {
 
 		// Render
 		_window.clear();
-		_gameState->draw(_window);
+		if (_gameState != nullptr) {
+			_gameState->draw(_window);
+		}
 		_window.display();
 	}
 }
 
-void Game::changeState(GameState* gameState) {
+void Game::changeState(GameState*const& gameState) {
 	if (_gameState != nullptr) {
 		delete _gameState;
 	}

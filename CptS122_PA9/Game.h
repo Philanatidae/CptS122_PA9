@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameState.h"
-#include "MainGameState.h"
+class GameState; // Forward declare
 
 #define GAME_WINDOW_WIDTH 1280
 #define GAME_WINDOW_HEIGHT 720
@@ -22,7 +22,7 @@ public:
 	*/
 	void run();
 
-	void changeState(GameState* gameState);
+	void changeState(GameState*const& gameState);
 
 private:
 	GameState* _gameState;

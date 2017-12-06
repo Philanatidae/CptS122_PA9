@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShootingEnemy.cpp" />
     <ClCompile Include="BouncingEnemy.cpp" />
     <ClCompile Include="GameOverGameState.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="WinGameState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShootingEnemy.h" />
     <ClInclude Include="BouncingEnemy.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FallingPhysicsObject.h" />

@@ -35,7 +35,7 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 			gameObjects.insert(new Projectile(10.0f, sf::Vector2f(getPosition().x + PLAYER_WIDTH, getPosition().y + PLAYER_HEIGHT / 2), 1, Target(enemy)));
 		}
 	}
-	else {
+	else if(_shotTimer < 0){
 		_shotTimer = 0;
 	}
 

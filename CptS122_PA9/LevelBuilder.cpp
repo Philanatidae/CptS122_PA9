@@ -7,8 +7,14 @@ LevelBuilder::LevelBuilder(std::set<GameObject*>* const & gameObjectsPtr)
 
 void LevelBuilder::drawHorizontal(const float& dx) {
 	sf::Vector2f position = _currPosition;
+	float ddx = dx;
 
-	_gameObjectsPtr->insert(new Floor(_currPosition, dx, FLOOR_THICKNESS));
+	if (dx < 0) { // Left
+		position.x += FLOOR_THICKNESS;
+		ddx -= FLOOR_THICKNESS;
+	}
+
+	_gameObjectsPtr->insert(new Floor(position, ddx, FLOOR_THICKNESS));
 	_currPosition.x += dx;
 }
 void LevelBuilder::drawVertical(const float& dy) {
@@ -30,4 +36,8 @@ void LevelBuilder::move(const float& dx, const float& dy) {
 void LevelBuilder::set(const float& x, const float& y) {
 	_currPosition.x = x;
 	_currPosition.y = y;
+}
+
+const sf::Vector2f& LevelBuilder::getPosition() const {
+	return _currPosition;
 }

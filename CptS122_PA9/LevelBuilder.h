@@ -15,6 +15,8 @@ public:
 	void move(const float& dx, const float& dy);
 	void set(const float& x, const float& y);
 
+	const sf::Vector2f& getPosition() const;
+
 private:
 	std::set<GameObject*>* const _gameObjectsPtr;
 	sf::Vector2f _currPosition;

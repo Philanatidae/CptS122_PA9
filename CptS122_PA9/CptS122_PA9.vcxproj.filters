@@ -60,6 +60,12 @@
     <ClCompile Include="GameOverGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WinGameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
@@ -111,6 +117,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameOverGameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinGameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

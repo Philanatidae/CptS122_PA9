@@ -13,17 +13,24 @@ void MainGameState::update(const sf::Time& dt) {
 	GameState::update(dt);
 
 	bool foundPlayer = false;
+	bool foundGoal = false;
 	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 		iterator != _gameObjects.end();
 		iterator++) {
 		if (dynamic_cast<Player*>(*iterator)) {
 			foundPlayer = true;
 			_camera.setCenter((*iterator)->getPosition());
-			break;
+		}
+		if (dynamic_cast<GoalGameObject*>(*iterator)) {
+			foundGoal = true;
 		}
 	}
 	if (!foundPlayer) {
 		getGame()->changeState(new GameOverGameState(getGame()));
+		return;
+	}
+	if (!foundGoal) {
+		getGame()->changeState(new WinGameState(getGame()));
 		return;
 	}
 }
@@ -56,4 +63,7 @@ void MainGameState::createLevel() {
 	// Enemies
 	_gameObjects.insert(new SineEnemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(1100, 0)));
 	_gameObjects.insert(new BouncingEnemy(sf::Color::Red, sf::Vector2f(1200, 0)));
+
+	// Goal
+	_gameObjects.insert(new GoalGameObject(sf::Vector2f(1300, 200)));
 }

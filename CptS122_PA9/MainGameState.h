@@ -4,7 +4,16 @@
 class GameState;
 class Game;
 
+#include "LevelBuilder.h"
+
+#include "Player.h"
+#include "SineEnemy.h"
+#include "BouncingEnemy.h"
+#include "Projectile.h"
+#include "GoalGameObject.h"
+
 #include "GameOverGameState.h"
+#include "WinGameState.h"
 
 #define GAME_WINDOW_WIDTH 1280
 #define GAME_WINDOW_HEIGHT 720

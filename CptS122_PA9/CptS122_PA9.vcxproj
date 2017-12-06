@@ -154,6 +154,7 @@
     <ClCompile Include="BouncingEnemy.cpp" />
     <ClCompile Include="GameOverGameState.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GoalGameObject.cpp" />
     <ClCompile Include="MainGameState.cpp" />
     <ClCompile Include="MenuGameState.cpp" />
     <ClCompile Include="SineEnemy.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="WinGameState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BouncingEnemy.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameOverGameState.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GoalGameObject.h" />
     <ClInclude Include="LevelBuilder.h" />
     <ClInclude Include="MainGameState.h" />
     <ClInclude Include="MenuGameState.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="SineEnemy.h" />
     <ClInclude Include="Target.h" />
     <ClInclude Include="TextObject.h" />
+    <ClInclude Include="WinGameState.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Roboto-Regular.ttf" />

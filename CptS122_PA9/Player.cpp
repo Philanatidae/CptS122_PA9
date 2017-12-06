@@ -39,7 +39,7 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		_shotTimer = 0;
 	}
 
-	// Enemy Collision Check
+	// Enemy/Goal Collision Check
 	for (std::set<GameObject*>::iterator iterator = gameObjects.begin();
 		iterator != gameObjects.end();
 		iterator++)
@@ -50,6 +50,12 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 			if (getBoundingBox().intersects((*iterator)->getBoundingBox())) 
 			{
 				_toDelete = true;
+			}
+		}
+		if (dynamic_cast<GoalGameObject*>(*iterator) != nullptr) {
+			// Player Collided with goal
+			if (getBoundingBox().intersects((*iterator)->getBoundingBox())) {
+				(*iterator)->setToDelete();
 			}
 		}
 	}

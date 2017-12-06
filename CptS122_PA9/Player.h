@@ -3,6 +3,8 @@
 #include "GameObject.h"
 #include "FallingPhysicsObject.h"
 #include "Projectile.h"
+#include "Enemy.h"
+#include "GoalGameObject.h"
 
 #define PLAYER_HORIZONTAL_VELOCITY 200
 #define PLAYER_JUMP_VELOCITY -450

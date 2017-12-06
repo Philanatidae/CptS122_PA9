@@ -7,13 +7,7 @@ class Game; // Forward declare
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-
-#include "LevelBuilder.h"
-
 #include "Player.h"
-#include "SineEnemy.h"
-#include "BouncingEnemy.h"
-#include "Projectile.h"
 
 class GameState {
 public:

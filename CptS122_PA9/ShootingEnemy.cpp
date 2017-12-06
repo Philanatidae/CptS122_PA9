@@ -16,7 +16,7 @@ void ShootingEnemy::update(std::set<GameObject*>& gameObjects, const sf::Time& d
 	{
 		_shootTimer = SHOOTING_ENEMY_SHOOT_PERIOD; // reset shooting timer
 
-		gameObjects.insert(new Projectile(SHOOTING_ENEMY_PROJECTILE_RADIUS, getPosition(), 
+		gameObjects.insert(new Projectile(SHOOTING_ENEMY_PROJECTILE_RADIUS, sf::Vector2f(getPosition().x, getPosition().y + 50), 
 			-1.0f, Target(player)));
 	}
 	// Update Physics

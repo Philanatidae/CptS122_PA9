@@ -118,8 +118,7 @@ void MainGameState::createLevel() {
 	_gameObjects.insert(new SineEnemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(levelBuilder.getPosition().x + 250, levelBuilder.getPosition().y - 75)));
 	levelBuilder.drawHorizontal(500);
 	levelBuilder.drawVertical(500);
-	_gameObjects.insert(new BouncingEnemy(sf::Color::Red, sf::Vector2f(levelBuilder.getPosition().x + 100, 100)));
-	_gameObjects.insert(new SineEnemy(sf::Vector2f(50, 50), sf::Color::Yellow, sf::Vector2f(levelBuilder.getPosition().x + 250, levelBuilder.getPosition().y - 75)));
+	_gameObjects.insert(new ShootingEnemy(sf::Color::Magenta, sf::Vector2f(levelBuilder.getPosition().x + 600, levelBuilder.getPosition().y - 75)));
 	levelBuilder.drawHorizontal(1000);
 
 	// WALL (catches stray bullets)

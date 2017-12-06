@@ -8,7 +8,7 @@
 #define SHOOTING_ENEMY_HEIGHT 100.0f
 #define SHOOTING_ENEMY_PROJECTILE_RADIUS 25.0f
 
-#define SHOOTING_ENEMY_SHOOT_PERIOD 1
+#define SHOOTING_ENEMY_SHOOT_PERIOD 1.5f
 
 class ShootingEnemy : public Enemy, public FallingPhysicsObject
 {

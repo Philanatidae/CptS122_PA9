@@ -9,6 +9,7 @@ class Game;
 #include "Player.h"
 #include "SineEnemy.h"
 #include "BouncingEnemy.h"
+#include "ShootingEnemy.h"
 #include "Projectile.h"
 #include "GoalGameObject.h"
 

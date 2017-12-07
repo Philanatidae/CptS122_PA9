@@ -1,5 +1,8 @@
 #include "Game.h"
 
+/**
+Constructs main game class.
+*/
 Game::Game():
 	_window(sf::VideoMode(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT), "CptS 122 Game"),
 	_gameState(nullptr) {
@@ -11,6 +14,9 @@ Game::~Game() {
 	}
 }
 
+/**
+Runs the game (blocks).
+*/
 void Game::run() {
 	sf::Clock dtClock;
 	while (_window.isOpen()) {
@@ -34,6 +40,9 @@ void Game::run() {
 	}
 }
 
+/**
+Changes the game state (takes ownership).
+*/
 void Game::changeState(GameState*const& gameState) {
 	if (_gameState != nullptr) {
 		delete _gameState;

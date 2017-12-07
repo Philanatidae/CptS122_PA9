@@ -14,6 +14,9 @@ Class for main game.
 */
 class Game {
 public:
+	/**
+	Constructs main game class.
+	*/
 	Game();
 	~Game();
 
@@ -22,6 +25,9 @@ public:
 	*/
 	void run();
 
+	/**
+	Changes the game state (takes ownership).
+	*/
 	void changeState(GameState*const& gameState);
 
 private:

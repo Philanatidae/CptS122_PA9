@@ -29,13 +29,13 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 			_shotTimer = PLAYER_SHOT_TIMER_DURATION;
 			gameObjects.insert(new Projectile(10.0f, sf::Vector2f(getPosition().x - 10 * 2, getPosition().y + PLAYER_HEIGHT / 2), -1, Target(enemy)));
 		}
-	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { // Shoot left
+	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { // Shoot right
 		if (_shotTimer <= 0) {
 			_shotTimer = PLAYER_SHOT_TIMER_DURATION;
 			gameObjects.insert(new Projectile(10.0f, sf::Vector2f(getPosition().x + PLAYER_WIDTH, getPosition().y + PLAYER_HEIGHT / 2), 1, Target(enemy)));
 		}
 	}
-	else if(_shotTimer < 0){
+	else if(_shotTimer < 0){ // Reset timer to 0 if it becomes negative
 		_shotTimer = 0;
 	}
 
@@ -44,18 +44,18 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		iterator != gameObjects.end();
 		iterator++)
 	{
-		if (dynamic_cast<Enemy*>(*iterator) != nullptr)
+		if (dynamic_cast<Enemy*>(*iterator) != nullptr) // current gameObject is an enemy
 		{
 			// Player Collided with enemy
 			if (getBoundingBox().intersects((*iterator)->getBoundingBox())) 
 			{
-				_toDelete = true;
+				_toDelete = true; // Player can be deleted
 			}
 		}
-		if (dynamic_cast<GoalGameObject*>(*iterator) != nullptr) {
+		if (dynamic_cast<GoalGameObject*>(*iterator) != nullptr) { // current gameObject is goal
 			// Player Collided with goal
 			if (getBoundingBox().intersects((*iterator)->getBoundingBox())) {
-				(*iterator)->setToDelete();
+				(*iterator)->setToDelete(); // Goal can be removed
 			}
 		}
 	}

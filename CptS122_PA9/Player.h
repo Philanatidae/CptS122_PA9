@@ -21,44 +21,36 @@ class Player : public FallingPhysicsObject
 {
 	public:
 		/**
-		Constructs a new player object.
-		@param position Position of player.
+		Constructor - Initializes _rectShape's position, color and dimensions
 		*/
 		Player(const sf::Vector2f& position);
+
 		/**
-		Updates the object.
-		@param gameObjects Global list of game objects.
-		@param dt Time since last frame (change in time since last frame).
+		Updates rectShape's position and allows player to shoot a projectile.
+		Detects collisions with enemies and platforms in gameObjects set and updates 
+		player accordingly
 		*/
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 		/**
-		Draws the object to the window.
-		@param window SFML Window to draw to.
+		Draws _rectShape to window
 		*/
 		void draw(sf::RenderWindow& window);
-
 		/**
-		Returns the position of the object.
-		@return Position of the object.
+		returns position of _rectShape
 		*/
 		const sf::Vector2f& getPosition() const;
 		/**
-		Returns the rotation of the object, in degrees.
-		@return Rotation of the object.
+		returns rotation of _rectShape in degrees
 		*/
 		const float& getRotation() const;
 		/**
-		Returns the bounding box of the object for collision
-		detection.
-		@return Bounding box of the object.
+		returns bounding box of _rectShape for purposes of detecting collisions
 		*/
 		sf::FloatRect getBoundingBox() const;
 
 	protected:
 		/**
-		Moves the object an x-distance and y-distance.
-		@param dx Change in x position.
-		@param dy Change in y position.
+		Changes _rectShape's position by dx in x-direct, and dy in y-direct
 		*/
 		void move(const float& dx, const float& dy);
 

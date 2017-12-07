@@ -1,14 +1,25 @@
 #include "MainGameState.h"
 
+/**
+Constructs a main game state.
+@param game Pointer to game class.
+*/
 MainGameState::MainGameState(Game*const& game)
 	:_camera(sf::FloatRect(0, 0, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT)),
 	GameState(game) {
 }
 
+/**
+Initializes the game state.
+*/
 void MainGameState::init() {
 	createLevel();
 }
 
+/**
+Updates the game state.
+@param dt Change in time since last frame.
+*/
 void MainGameState::update(const sf::Time& dt) {
 	GameState::update(dt);
 
@@ -34,11 +45,18 @@ void MainGameState::update(const sf::Time& dt) {
 		return;
 	}
 }
+/**
+Draws the game state.
+@param window Window to render to.
+*/
 void MainGameState::draw(sf::RenderWindow& window) {
 	window.setView(_camera);
 	GameState::draw(window);
 }
 
+/**
+Creates the level.
+*/
 void MainGameState::createLevel() {
 	_gameObjects.insert(new Player(sf::Vector2f(400, 0)));
 

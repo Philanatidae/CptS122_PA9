@@ -1,11 +1,19 @@
 #include"Player.h"
 
+/**
+Constructor - Initializes _rectShape's position, color and dimensions
+*/
 Player::Player(const sf::Vector2f& position) 
 	: _rectShape(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT))
 {
 	_rectShape.setFillColor(sf::Color::Blue);
 	_rectShape.setPosition(position);
 }
+/**
+Updates rectShape's position and allows player to shoot a projectile.
+Detects collisions with enemies and platforms in gameObjects set and updates
+player accordingly
+*/
 void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) //move right
@@ -64,26 +72,44 @@ void Player::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 	// Update physics after moving player
 	FallingPhysicsObject::update(gameObjects, dt);
 }
+/**
+Draws _rectShape to window
+*/
 void Player::draw(sf::RenderWindow &window)
 {
 	window.draw(_rectShape);
 }
+/**
+returns position of _rectShape
+*/
 const sf::Vector2f& Player::getPosition() const
 {
 	return _rectShape.getPosition();
 }
+/**
+returns rotation of _rectShape in degrees
+*/
 const float& Player::getRotation() const
 {
 	return _rectShape.getRotation();
 }
+/**
+returns bounding box of _rectShape for purposes of detecting collisions
+*/
 sf::FloatRect Player::getBoundingBox() const
 {
 	return _rectShape.getGlobalBounds();
 }
+/**
+Changes _rectShape's position by dx in x-direct, and dy in y-direct
+*/
 void Player::move(const float& dx, const float& dy) {
 	_rectShape.move(dx, dy);
 }
 
+/**
+Causes the player to jump.
+*/
 void Player::jump() {
 	setYVelocity(PLAYER_JUMP_VELOCITY);
 }

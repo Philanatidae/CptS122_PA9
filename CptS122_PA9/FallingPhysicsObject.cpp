@@ -1,5 +1,8 @@
 #include "FallingPhysicsObject.h"
 
+/**
+Constructs a FallingPhysicsObject.
+*/
 FallingPhysicsObject::FallingPhysicsObject()
 	:_yVel(0),_isGrounded(false) {
 
@@ -80,14 +83,26 @@ void FallingPhysicsObject::update(std::set<GameObject*>& gameObjects, const sf::
 		}
 	}
 }
+/**
+Returns true if the object is groudned.
+@return true if grounded, false if not.
+*/
 const bool& FallingPhysicsObject::isGrounded() const {
 	return _isGrounded;
 }
 
+/**
+Returns the current Y-velocity (positive down).
+@return y-velocity of the object.
+*/
 const float& FallingPhysicsObject::getYVelocity() const {
 	return _yVel;
 }
 
+/**
+Sets the Y-velocity of the object (positive down).
+@param yvel New y-velocity of the object.
+*/
 void FallingPhysicsObject::setYVelocity(const float& yvel) {
 	_yVel = yvel;
 }

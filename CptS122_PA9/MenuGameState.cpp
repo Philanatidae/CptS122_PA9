@@ -1,9 +1,16 @@
 #include "MenuGameState.h"
 
+/**
+Constructs a game state for the menu.
+@param game Pointer to game class.
+*/
 MenuGameState::MenuGameState(Game*const& game)
 	:_elapsedTime(0), GameState(game) {
 }
 
+/**
+Initializes the game state.
+*/
 void MenuGameState::init() {
 	_gameObjects.insert(new TextObject(sf::Vector2f(100, 100), "CptS PA 9", sf::Color::White, 40));
 	_gameObjects.insert(new TextObject(sf::Vector2f(100, 150), "By Philip Rader and Navdeep Singh", sf::Color::White));
@@ -17,6 +24,10 @@ void MenuGameState::init() {
 	_gameObjects.insert(_flashingObject);
 }
 
+/**
+Updates the game state.
+@param dt Change in time since last frame.
+*/
 void MenuGameState::update(const sf::Time& dt) {
 	_elapsedTime += dt.asSeconds();
 	if (cos(_elapsedTime * 2 * 3.14159265f) > 0) {
@@ -33,6 +44,10 @@ void MenuGameState::update(const sf::Time& dt) {
 		return; // Return or else there are issues
 	}
 }
+/**
+Draws the game state.
+@param window Window to render to.
+*/
 void MenuGameState::draw(sf::RenderWindow& window) {
 	window.setView(window.getDefaultView());
 	GameState::draw(window);

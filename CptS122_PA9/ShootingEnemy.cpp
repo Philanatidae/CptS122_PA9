@@ -9,13 +9,14 @@ ShootingEnemy::ShootingEnemy(const sf::Color& color, const sf::Vector2f& positio
 }
 void ShootingEnemy::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 {
-	_shootTimer -= dt.asSeconds();
+	_shootTimer -= dt.asSeconds(); // update time until next shot
 
-	// Shoot every second
+	// Shoot if _shootTimer expired (every second)
 	if (_shootTimer <= 0) 
 	{
 		_shootTimer = SHOOTING_ENEMY_SHOOT_PERIOD; // reset shooting timer
-
+		
+		// shoot
 		gameObjects.insert(new Projectile(SHOOTING_ENEMY_PROJECTILE_RADIUS, sf::Vector2f(getPosition().x, getPosition().y + 50), 
 			-1.0f, Target(player)));
 	}

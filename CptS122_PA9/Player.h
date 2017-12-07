@@ -17,14 +17,38 @@
 class Player : public FallingPhysicsObject
 {
 	public:
+		/**
+		Constructor - Initializes _rectShape's position, color and dimensions
+		*/
 		Player(const sf::Vector2f& position);
+
+		/**
+		Updates rectShape's position and allows player to shoot a projectile.
+		Detects collisions with enemies and platforms in gameObjects set and updates 
+		player accordingly
+		*/
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
+		/**
+		Draws _rectShape to window
+		*/
 		void draw(sf::RenderWindow& window);
+		/**
+		returns position of _rectShape
+		*/
 		const sf::Vector2f& getPosition() const;
+		/**
+		returns rotation of _rectShape in degrees
+		*/
 		const float& getRotation() const;
+		/**
+		returns bounding box of _rectShape for purposes of detecting collisions
+		*/
 		sf::FloatRect getBoundingBox() const;
 
 	protected:
+		/**
+		Changes _rectShape's position by dx in x-direct, and dy in y-direct
+		*/
 		void move(const float& dx, const float& dy);
 
 	private:

@@ -1,7 +1,7 @@
-#include"Projectile.h"
+#include "Projectile.h"
 
-Projectile::Projectile(const float& radius, const sf::Vector2f& position, const float& direction,
-	const Target& target)
+Projectile::Projectile(const float& radius, const sf::Vector2f& position, 
+	const float& direction, const Target& target)
 	: _circleShape(radius),_xVel(direction / abs(direction) * PROJECTILE_HORIZONTAL_VELOCTIY),
 	_target(target)
 {
@@ -16,6 +16,7 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 	// Collision check
 	const sf::FloatRect myBoundingBox = getBoundingBox();
 
+	// Iterate through all existing gameObjects
 	for (std::set<GameObject*>::iterator iterator = gameObjects.begin();
 		iterator != gameObjects.end(); 
 		iterator++)
@@ -25,6 +26,7 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		// Check for collision with target
 		bool isTarget = false;
 
+		// Check if current gameObject is a target type of projectile
 		switch (_target)
 		{
 			case player:
@@ -36,7 +38,7 @@ void Projectile::update(std::set<GameObject*>& gameObjects, const sf::Time& dt)
 		}
 		if (isTarget)
 		{
-			//If colliding with target, projectile and target can be set toDelete
+			// If projectile colliding with target, projectile and target object can be set toDelete
 			if (pGameObject->getBoundingBox().intersects(getBoundingBox()))
 			{
 				_toDelete = true;

@@ -25,22 +25,25 @@ class ShootingEnemy : public Enemy, public FallingPhysicsObject
 		/**
 		Update's position of _rectShape (physics through collisions with floor).
 		Allows ShootingEnemy to shoot a projectile when _shootTimer expires.
+		@param gameObjects Global list of game objects.
+		@param dt Time since last frame (change in time since last frame).
 		*/
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 		/**
 		Draws _rectShape to window
+		@param window SFML Window to draw to.
 		*/
 		void draw(sf::RenderWindow& window);
 		/**
-		returns position of _rectShape
+		@return position of _rectShape
 		*/
 		const sf::Vector2f& getPosition() const;
 		/**
-		returns rotation of _rectShape
+		@return rotation of _rectShape
 		*/
 		const float& getRotation() const;
 		/**
-		returns bounding box of _rectShape for purposes of collision detection
+		@return bounding box of _rectShape for purposes of collision detection
 		*/
 		sf::FloatRect getBoundingBox() const;
 

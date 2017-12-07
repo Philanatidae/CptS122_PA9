@@ -20,21 +20,25 @@ class Projectile : public GameObject
 
 		/**
 		Updates position and member variables of Projectile
+		@param gameObjects Global list of game objects.
+		@param dt Time since last frame (change in time since last frame).
 		*/
 		void update(std::set<GameObject*>& gameObjects, const sf::Time& dt);
 		/**
-		Draws _circleShape member variable to window parameter
+		Draws _circleShape member variable to window parameter.
+		@param window SFML Window to draw to.
 		*/
 		void draw(sf::RenderWindow& window);
 		/**
-		returns reference to position of _circleShape member variable
+		@return Position of _circleShape member variable
 		*/
 		const sf::Vector2f& getPosition() const;
 		/**
-		returns rotation of _circleShape member variable, in degrees*/
+		@return Rotation of _circleShape member variable, in degrees.
+		*/
 		const float& getRotation() const;
 		/**
-		returns bounding box of _circleShape for purposes of detecting collisions
+		@return Bounding box of _circleShape for purposes of detecting collisions.
 		*/
 		sf::FloatRect getBoundingBox() const;
 
@@ -45,6 +49,8 @@ class Projectile : public GameObject
 
 		/**
 		moves _circleShape member variable by dx in x-direction and dy in y-direction
+		@param dx - change in x position
+		@param dy - change in y position
 		*/
 		void move(const float& dx, const float& dy);
 };

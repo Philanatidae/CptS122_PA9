@@ -1,5 +1,9 @@
 #include "GameState.h"
 
+/**
+Constructs a game state.
+@param game Pointer to game class.
+*/
 GameState::GameState(Game*const& game):_gamePtr(game) {
 }
 GameState::~GameState() {
@@ -10,18 +14,34 @@ GameState::~GameState() {
 	}
 }
 
+/**
+Updates the game state.
+@param dt Change in time since last frame.
+*/
 void GameState::update(const sf::Time& dt) {
 	updateAll(dt);
 	deleteObjects();
 }
+/**
+Draws the game state.
+@param window Window to render to.
+*/
 void GameState::draw(sf::RenderWindow& window) {
 	drawAll(window);
 }
 
+/**
+Returns the pointer to the game class.
+@return Pointer to the game class.
+*/
 Game*const& GameState::getGame() const {
 	return _gamePtr;
 }
 
+/**
+Updates all the entities.
+@param dt Change in time since last frame.
+*/
 void GameState::updateAll(const sf::Time& dt) {
 	// While loop is necessary otherwise an invalid iterator will occur
 	std::set<GameObject*>::iterator iterator = _gameObjects.begin();
@@ -30,6 +50,10 @@ void GameState::updateAll(const sf::Time& dt) {
 		gameObject->update(_gameObjects, dt);
 	}
 }
+/**
+Draws all the entities.
+@param window Window to render to.
+*/
 void GameState::drawAll(sf::RenderWindow& window) {
 	for (std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 		iterator != _gameObjects.end();
@@ -39,6 +63,9 @@ void GameState::drawAll(sf::RenderWindow& window) {
 		gameObject->draw(window);
 	}
 }
+/**
+Deletes objects that have their delete flag set.
+*/
 void GameState::deleteObjects() {
 	std::set<GameObject*>::iterator iterator = _gameObjects.begin();
 	std::set<GameObject*>::iterator temp;
